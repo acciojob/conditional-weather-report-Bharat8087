@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import WeatherDisplay from './WeatherDisplay';
 
-function App() {
+const App = () => {
+  const [weather, setWeather] = useState({ temperature: 0, conditions: '' });
+
+  useEffect(() => {
+    const weatherData = { temperature: 25, conditions: "Sunny" };
+    setWeather(weatherData);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <WeatherDisplay weather={weather} />
     </div>
   );
-}
+};
 
 export default App;
